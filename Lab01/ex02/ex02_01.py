@@ -1,7 +1,6 @@
 #Nhap ten va tuoi nguoi dung
 ten = input("Nhập tên của bạn: ")
 
-#check if tuoi is a number
 while True:
     try:
         tuoi = int(input("Nhập tuổi của bạn: "))
