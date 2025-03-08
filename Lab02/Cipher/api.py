@@ -1,6 +1,8 @@
 from flask import Flask, request, jsonify
 from Caesar import CaesarCipher
 from Vigenere import VigenereCipher
+from RailFence import RailFenceCipher
+from PlayFair import PlayFairCipher
 
 app = Flask(__name__)
 
@@ -34,6 +36,38 @@ def Vigenere_decrypt():
     ciphertext = data.get('ciphertext')
     key = data.get('key')
     plaintext = VigenereCipher.decrypt(ciphertext, key)
+    return jsonify({'plaintext': plaintext})
+
+@app.route('/railfence/encrypt', methods=['POST'])
+def RailFence_encrypt():
+    data = request.get_json()
+    plaintext = data.get('plaintext')
+    key = data.get('key')
+    ciphertext = RailFenceCipher.encrypt(plaintext, key)
+    return jsonify({'ciphertext': ciphertext})
+
+@app.route('/railfence/decrypt', methods=['POST'])
+def RailFence_decrypt():
+    data = request.get_json()
+    ciphertext = data.get('ciphertext')
+    key = data.get('key')
+    plaintext = RailFenceCipher.decrypt(ciphertext, key)
+    return jsonify({'plaintext': plaintext})
+
+@app.route('/playfair/encrypt', methods=['POST'])
+def PlayFair_encrypt():
+    data = request.get_json()
+    plaintext = data.get('plaintext')
+    key = data.get('key')
+    ciphertext = PlayFairCipher.read(plaintext, key, 1)
+    return jsonify({'ciphertext': ciphertext})
+
+@app.route('/playfair/decrypt', methods=['POST'])
+def PlayFair_decrypt():
+    data = request.get_json()
+    ciphertext = data.get('ciphertext')
+    key = data.get('key')
+    plaintext = PlayFairCipher.read(ciphertext, key, -1)
     return jsonify({'plaintext': plaintext})
 
 if __name__ == '__main__':
