@@ -1,4 +1,5 @@
-from flask import Flask, request, jsonify
+from Transposition import TranspositionCipher
+from flask import Flask, request, jsonify # type: ignore
 from Caesar import CaesarCipher
 from Vigenere import VigenereCipher
 from RailFence import RailFenceCipher
@@ -68,6 +69,22 @@ def PlayFair_decrypt():
     ciphertext = data.get('ciphertext')
     key = data.get('key')
     plaintext = PlayFairCipher.read(ciphertext, key, -1)
+    return jsonify({'plaintext': plaintext})
+
+@app.route('/transposition/encrypt', methods=['POST'])
+def Transposition_encrypt():
+    data = request.get_json()
+    plaintext = data.get('plaintext')
+    key = data.get('key')
+    ciphertext = TranspositionCipher.encrypt(plaintext, key)
+    return jsonify({'ciphertext': ciphertext})
+
+@app.route('/transposition/decrypt', methods=['POST'])
+def Transposition_decrypt():
+    data = request.get_json()
+    ciphertext = data.get('ciphertext')
+    key = data.get('key')
+    plaintext = TranspositionCipher.decrypt(ciphertext, key)
     return jsonify({'plaintext': plaintext})
 
 if __name__ == '__main__':
