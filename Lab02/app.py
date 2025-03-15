@@ -32,7 +32,7 @@ def railfence():
 def transposition():
     return render_template('transposition.html')
 
-# Route Functions
+# Route Functions for Encryption and Decryption
 @app.route('/caesar/encrypt', methods=['POST'])
 def Caesar_encrypt():
     plaintext = request.form['plaintext']
