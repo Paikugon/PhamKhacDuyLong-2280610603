@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caesar Cipher</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <table class="table">
+        <tr><td style="text-align: center;font-weight: bold;font-size: 25px;">Transposition Cipher</td></tr>
+        <tr><td style="font-weight:bold; color:blue">Encryption</td></tr>
+        <tr>
+            <td>
+                <form action="/transposition/encrypt" method="POST">
+                    <div class="form-group">
+                        <label for="plaintext">Plaintext:</label>
+                        <input type="text" class="form-control" id="plaintext" name="plaintext" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="key">Key:</label>
+                        <input type="number" class="form-control" id="key" name="key" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Encrypt</button>
+                </form>
+            </td>
+        </tr>
+        <tr><td style="font-weight:bold; color:blue">Decryption</td></tr>
+        <tr>
+            <td>
+                <form action="/transposition/decrypt" method="POST">
+                    <div class="form-group
+                    ">
+                        <label for="ciphertext">Ciphertext:</label>
+                        <input type="text" class="form-control" id="ciphertext" name="ciphertext" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="key">Key:</label>
+                        <input type="number" class="form-control" id="key" name="key" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Decrypt</button>
+                </form>
+            </td>
+        </tr>
+    </table>
+
+</body>
+</html>
