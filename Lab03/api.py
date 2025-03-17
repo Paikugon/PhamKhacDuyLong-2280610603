@@ -93,14 +93,6 @@ def ecc_verify():
         return jsonify({"verified": isVerified})
     except:
         return jsonify({"verified": False})
-    
-@app.route('/ecc/encrypt', methods=['POST'])
-def ecc_encrypt():
-    data = request.get_json()
-    message = data["y"]
-    sk, vk = eccCipher.loadKeys()
-    signature = eccCipher.sign(message, sk)
-    return jsonify({"signature": signature.hex()})
 
 if (__name__ == "__main__"):
     app.run(port=5000)
