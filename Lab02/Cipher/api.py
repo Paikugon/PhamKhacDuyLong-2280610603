@@ -1,5 +1,5 @@
 from Transposition import TranspositionCipher
-from flask import Flask, request, jsonify # type: ignore
+from flask import Flask, request, jsonify 
 from Caesar import CaesarCipher
 from Vigenere import VigenereCipher
 from RailFence import RailFenceCipher
