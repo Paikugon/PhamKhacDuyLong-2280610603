@@ -64,14 +64,6 @@ def rsa_verify():
         return jsonify({"verified": False})
     
 eccCipher = ECCCipher()
-
-@app.route('/ecc/generate_keys', methods=['GET'])
-def ecc_generate_keys():
-    try: 
-        eccCipher.generateKeys()
-        return jsonify({"message": "Keys generated successfully"})
-    except:
-        return jsonify({"message": "An error occured while generating keys"})
     
 @app.route('/ecc/sign', methods=['POST'])
 def ecc_sign():
