@@ -71,6 +71,13 @@ def PlayFair_decrypt():
     plaintext = PlayFairCipher.read(ciphertext, key, -1)
     return jsonify({'plaintext': plaintext})
 
+@app.route('/playfair/matrix', methods=['POST'])
+def PlayFair_matrix():
+    data = request.get_json()
+    key = data.get('key')
+    matrix = PlayFairCipher.CreateMatrix(key)
+    return jsonify({'matrix': matrix})
+
 @app.route('/transposition/encrypt', methods=['POST'])
 def Transposition_encrypt():
     data = request.get_json()
